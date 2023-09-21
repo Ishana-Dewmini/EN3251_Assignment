@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 import time
+import pandas as pd
 import json
-
 # Callback when the client connects to the MQTT broker
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
@@ -9,9 +9,8 @@ def on_connect(client, userdata, flags, rc):
     else:
         print("Connection failed with code {rc}")
 
-
 # Create an MQTT client instance
-client = mqtt.Client("PythonPub")
+client = mqtt.Client("PythonPub_ass1_B_2")    
 
 # Set the callback function
 client.on_connect = on_connect
@@ -20,41 +19,31 @@ broker_address = "test.mosquitto.org"  # broker's address
 broker_port = 1883
 keepalive = 5
 qos = 0
-publish_topic = "Phoenix"
+publish_topic = "Group07_B_2"
 
 # Connect to the MQTT broker
 client.connect(broker_address, broker_port, keepalive)
 
-# Start the MQTT loop to handle network traffic
-#client.loop_start()
+# Publish a message
+try:
+    file_path = r"C:\Users\HP\Downloads\PartB.xlsx"
+    # Read the file
+    df = pd.read_excel(file_path)
 
-# Publish loop
-#read_file_name = ".Xlsx"
-value = "PartB.xlsx"#input('Enter the file name: ')
+    # Convert the dataframe to JSON
+    json_str = df.to_json(orient='records')
+    json_obj = json.loads(json_str)
 
-read_file_name = value # read_file_name
-file = open(read_file_name, 'r')
-print(file.read())
-
-# try:
-    
-#     while True:
-#         # Publish a message to the send topic after reading the file
-#         read_file_name = value + read_file_name
-        
-#         with open(read_file_name) as json_file:
-#             file = json.load(json_file)
-
-#         data_out=json.dumps(file) #encode object to JSON
-#         client.publish(publish_topic,data_out,qos)
-#         print(f"Published message '{data_out}' to topic '{publish_topic}'\n")
-        
+    for row in json_obj:
+        # Publish the message
+        client.publish(publish_topic, json.dumps(row), qos)
         # Wait for a moment to simulate some client activity
-        #time.sleep(6)
+        time.sleep(1)
 
-#except KeyboardInterrupt:
+except KeyboardInterrupt:
     # Disconnect from the MQTT broker
- #   pass
-#client.loop_stop()
-#client.disconnect()
+    pass
+
+client.disconnect()
 print("Disconnected from the MQTT broker")
+
