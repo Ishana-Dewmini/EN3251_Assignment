@@ -26,7 +26,7 @@ client.connect(broker_address, broker_port, keepalive)
 
 # Publish a message
 try:
-    file_path = r"C:\Users\HP\Downloads\PartB.xlsx"
+    file_path = r"PartB.xlsx"
     # Read the file
     df = pd.read_excel(file_path)
 
