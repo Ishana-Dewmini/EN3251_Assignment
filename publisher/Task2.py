@@ -29,10 +29,10 @@ client.connect(broker_address, broker_port, keepalive)
 #client.loop_start()
 
 # Publish loop
-read_file_name = ".Xlsx"
-value = "origin/main/PartB"#input('Enter the file name: ')
+#read_file_name = ".Xlsx"
+value = "main/PartB.xlsx"#input('Enter the file name: ')
 
-read_file_name = value + read_file_name
+read_file_name = value # read_file_name
 file = open(read_file_name, 'r')
 print(file.read())
 
