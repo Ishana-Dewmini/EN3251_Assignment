@@ -19,7 +19,7 @@ client.on_connect = on_connect
 broker_address = "test.mosquitto.org"  # broker's address
 broker_port = 1883
 keepalive = 5
-qos = 0
+qos = 2
 
 # Connect to the MQTT broker
 client.connect(broker_address, broker_port, keepalive)
