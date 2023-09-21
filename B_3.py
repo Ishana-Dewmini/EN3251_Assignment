@@ -19,7 +19,7 @@ client.on_connect = on_connect
 broker_address = "test.mosquitto.org"  # broker's address
 broker_port = 1883
 keepalive = 5
-qos = 0
+qos = 2
 
 # Connect to the MQTT broker
 client.connect(broker_address, broker_port, keepalive)
@@ -34,6 +34,7 @@ try:
     json_str = df.to_json(orient='records')
     json_obj = json.loads(json_str)
 
+    client.loop_start()
     for row in json_obj:
         # Publish the message
         publish_topic = row['Location']
@@ -45,6 +46,7 @@ except KeyboardInterrupt:
     # Disconnect from the MQTT broker
     pass
 
+client.loop_stop()
 client.disconnect()
 print("Disconnected from the MQTT broker")
 
