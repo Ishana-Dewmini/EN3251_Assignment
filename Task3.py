@@ -19,7 +19,6 @@ broker_address = "test.mosquitto.org"  # broker's address
 broker_port = 1883
 keepalive = 5
 qos = 0
-publish_topic = "Group07_B_2"
 
 # Connect to the MQTT broker
 client.connect(broker_address, broker_port, keepalive)
@@ -36,6 +35,7 @@ try:
 
     for row in json_obj:
         # Publish the message
+        publish_topic = row['Location']
         client.publish(publish_topic, json.dumps(row), qos)
         # Wait for a moment to simulate some client activity
         time.sleep(1)
