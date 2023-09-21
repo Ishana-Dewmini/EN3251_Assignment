@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import time
 import pandas as pd
 import json
+
 # Callback when the client connects to the MQTT broker
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
