@@ -34,6 +34,7 @@ try:
     json_str = df.to_json(orient='records')
     json_obj = json.loads(json_str)
 
+    client.loop_start()
     for row in json_obj:
         # Publish the message
         publish_topic = row['Location']
@@ -45,6 +46,7 @@ except KeyboardInterrupt:
     # Disconnect from the MQTT broker
     pass
 
+client.loop_stop()
 client.disconnect()
 print("Disconnected from the MQTT broker")
 
