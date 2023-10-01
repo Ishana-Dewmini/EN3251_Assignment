@@ -3,7 +3,7 @@
 #include <ArduinoJson.h>
 
 #define LED_R D1
-#define LED_Y D2
+#define LED_O D2
 #define LED_G D3
 
 WiFiClient espClient;
@@ -68,31 +68,22 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.println(pot);
   if (pot != nullptr && ldr != nullptr) {    
     if (strcmp(pot, "Low") == 0 && strcmp(ldr, "Low") == 0){
-      Serial.println("1");
       blynk();          
     }else if (strcmp(pot, "Low") == 0 && strcmp(ldr, "Medium") == 0){
-      Serial.println("2");
       blynk();
     }else if (strcmp(pot, "Medium") == 0 && strcmp(ldr, "Low") == 0){
-      Serial.println("3");
       blynk();
     }else if (strcmp(pot, "Medium") == 0 && strcmp(ldr, "Medium") == 0){
-      Serial.println("4");
       state2();
     }else if (strcmp(pot, "High") == 0 && strcmp(ldr, "Low") == 0){
-      Serial.println("5");
       state2();
     }else if (strcmp(pot, "Low") == 0 && strcmp(ldr, "High") == 0){
-      Serial.println("6");
       state2();
     }else if (strcmp(pot, "High") == 0 && strcmp(ldr, "Medium") == 0){
-      Serial.println("7");
       state3();
     }else if (strcmp(pot, "Medium") == 0 && strcmp(ldr, "High") == 0){
-      Serial.println("8");
       state3();      
     }else if (strcmp(pot, "High") == 0 && strcmp(ldr, "High") == 0){
-      Serial.println("9");
       state3();      
     }
 
@@ -103,11 +94,11 @@ void blynk(){
   int t = 0;      
   while (t<4500){
     digitalWrite(LED_R,HIGH);
-    digitalWrite(LED_Y,HIGH);
+    digitalWrite(LED_O,HIGH);
     digitalWrite(LED_G,HIGH);
     delay(400);
     digitalWrite(LED_R,LOW);
-    digitalWrite(LED_Y,LOW);
+    digitalWrite(LED_O,LOW);
     digitalWrite(LED_G,LOW);
     delay(100);
     t=t+500;     
@@ -116,21 +107,21 @@ void blynk(){
 
 void state2(){
     digitalWrite(LED_R,LOW);
-    digitalWrite(LED_Y,HIGH);
+    digitalWrite(LED_O,HIGH);
     digitalWrite(LED_G,HIGH);
     delay(4500);
-    digitalWrite(LED_Y,LOW);
+    digitalWrite(LED_O,LOW);
     digitalWrite(LED_G,LOW);
     
 }
 
 void state3(){
     digitalWrite(LED_R,HIGH);
-    digitalWrite(LED_Y,HIGH);
+    digitalWrite(LED_O,HIGH);
     digitalWrite(LED_G,HIGH);
     delay(4500);
     digitalWrite(LED_R,LOW);    
-    digitalWrite(LED_Y,LOW);
+    digitalWrite(LED_O,LOW);
     digitalWrite(LED_G,LOW);
     
 }
