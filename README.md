@@ -1,5 +1,6 @@
 # Implementation of transferring information via MQTT using JSON objects
 
+## Introduction
 These repository investigates the implementation of transferring information via MQTT using JSON objects. To achieve this two procedures are followed. 
 ##### 1. Part A
 Reading sensor values in an IoT node, converting them into a JSON object, and transmitting it to another IoT node  to controlling the device in that IoT node. 
