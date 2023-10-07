@@ -68,6 +68,7 @@ Node B has subscribed to the same topic that Node A publishing and according to 
 - Show the Potentiometer and LDR readings of the most recent 20s as charts.
 
 ##### Node-Red flow
+![Node-Red flow](url)
 
 
 
