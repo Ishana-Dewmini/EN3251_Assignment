@@ -69,7 +69,45 @@ Node B has subscribed to the same topic that Node A publishing and according to 
 
 ##### Node-Red flow
 ![Node-Red flow](flow.png)
-![Node-Red flow](dashboard.png)
+##### Node-Red Dashboard
+![Node-Red Dashboard](dashboard.png)
+
+## Part B
+### Task 1
+This task is to publish the entire contents of a worksheet as a single JSON object to a single topic in an MQTT broker.
+To achieve this task we used a python code to read the data in the file, convert it to a JSON object and publish to the topic
+
+#### Workseet structure
+| Location     | Temperature | Humidity | Light |
+|--------------|-------------|----------|-------|
+| Living Room  | 20          | 10       | 250   |
+| Kitchen      | 25          | 30       | 200   |
+| Bedroom      | 18          | 60       | 150   |
+| Garage       | 30          | 40       | 70    |
+
+#### JSON object format:
+{"0":{"Location":"LivingRoom","Temperature":100,"Humidity":10,"Light":250},"1":{"Location":" Kitchen","Temperature":20,"Humidity":20,"Light":200},"2":{"Location":"BedRoom","Temperatu re":26,"Humidity":60,"Light":150},"3":{"Location":"Gararge","Temperature":30,"Humidity":40," Light":70}}
+
+### Task 2
+Publish the contents of the worksheet as separate JSON objects for each row to a single topic in
+an MQTT broker.
+#### JSON objects' format:
+{"Location":"Bed Room","Temperature":26,"Humidity":60,"Light":150}
+{"Location":"Gararge","Temperature":30,"Humidity":40,"Light":70}
+
+### Task 3
+Publish the contents of the worksheet as separate JSON objects for each row to different topics
+in an MQTT broker.(The topic should be illustrative of the location)
+
+### Task 4
+odeRed dashboard to display the data pertaining to each location
+##### Node-Red flow
+![Node-Red flow](flow2.png)
+##### Node-Red Dashboard
+![Node-Red Dashboard](dashboard2.png)
+
+
+
 
 
 
