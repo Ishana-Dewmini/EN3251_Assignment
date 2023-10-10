@@ -37,7 +37,7 @@ try:
     client.loop_start()
     for row in json_obj:
         # Publish the message
-        publish_topic = row['Location']
+        publish_topic = "Group07/"+row['Location']
         client.publish(publish_topic, json.dumps(row), qos)
         # Wait for a moment to simulate some client activity
         time.sleep(1)
