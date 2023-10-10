@@ -49,6 +49,10 @@ try:
         client.publish(publish_topic,data_out,qos)
         print(f"Published message '{data_out}' to topic '{publish_topic}'\n")
 
+<<<<<<< HEAD
+=======
+        # Wait for a moment to simulate some client activity
+>>>>>>> 8b5f89530204a36710125f45c867527857f40af3
         time.sleep(6)
 
 except KeyboardInterrupt:
@@ -56,4 +60,8 @@ except KeyboardInterrupt:
     pass
 client.loop_stop()
 client.disconnect()
+<<<<<<< HEAD
 print("Disconnected from the MQTT broker")
+=======
+print("Disconnected from the MQTT broker")
+>>>>>>> 8b5f89530204a36710125f45c867527857f40af3
